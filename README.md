@@ -12,7 +12,7 @@ A mixed-effects logistic regression predicts whether a rare cell type is poorly 
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
 - [Reproducibility notes](#reproducibility-notes)
-- [Input data](#input-data)
+- [Data](#data)
 - [Annotation frameworks benchmarked](#annotation-frameworks-benchmarked)
 - [Datasets](#datasets)
 
@@ -43,7 +43,7 @@ cd Rarecell-annotation-failure
 Rscript analysis.R
 ```
 
-Run the script from the repository root. To analyze another representation, change `CASE` at the top of `analysis.R` (by default CellPLM_embeddings).
+Run the script from the repository root. To analyze another representation, change `CASE` at the top of `analysis.R` (by default CellPLM_embeddings, options CellPLM_HVG, CELLama_embeddings, and CELLama_HVG).
 
 ## Reproducibility notes
 
@@ -65,8 +65,36 @@ Run the script from the repository root. To analyze another representation, chan
 | `Imbalance_Ratio_Log_max` | **Class imbalance**: log-transformed imbalance ratio (common to rare cells), maximum over common cell types |
 
 `data/Distances_rarecommon.csv` 
+For every rare cell type, its distance to each common cell type of the same dataset, measured between cell-type centroids in a representation space (34,056 rows; four cases of 8,514 pairs each).
+
+| Column | Description |
+|---|---|
+| `Pair` | `<rare cell type>vs<common cell type>` |
+| `Dataset` | Dataset name |
+| `Euclidean` | Euclidean distance between the two centroids |
+| `Mahalanobis` | Mahalanobis (covariance-adjusted) distance between the two centroids |
+| `Cosine_Similarity` | Cosine similarity between the two centroid vectors |
+| `Imbalance_Ratio_Log` | Log-transformed imbalance ratio (cells of the common cell type divided by cells of the rare cell type) |
+| `Case` | Framework and representation space (below) |
+| `DatPair` | `Dataset_Pair` |
+| `Rare_Celltype_ID` | `Dataset_<rare cell type>`, the key shared with `Benchmarking_results.csv` |
+
 
 `data/Benchmarking_results.csv` 
+
+F1-score of every cell type on the **held-out test partition** (30% of the cells of each dataset, stratified by cell type) for each annotation framework. One row per framework, dataset and cell type (18,650 rows, 37 datasets).
+
+| Column | Description |
+|---|---|
+| `Tool` | Annotation framework (18 labels, see below) |
+| `Dataset` | Dataset name |
+| `Celltype` | Cell-type label; `macro avg` and `accuracy` rows are dataset-level summaries |
+| `F1-score` | F1-score of the cell type on the test partition |
+| `Id` | `Dataset_Celltype`, the key shared with `Distances_rarecommon.csv` |
+| `Type` | `Rare` (< 1% of the cells of the dataset), `Common`, or `none` for summary rows |
+| `SupportTest` | Number of cells of the cell type in the test partition |
+
+The 18 `Tool` labels correspond to the 12 frameworks listed [below](#annotation-frameworks-benchmarked). UCE, scMulan and scPRINT, which produce embeddings, are evaluated with three downstream classifiers: logistic regression (`_LR`), 30-nearest neighbors (`_30KNN`) and a multilayer perceptron (`_MLP`). The benchmark summaries in the manuscript use the `_MLP` variants.
 
 
 ## Annotation frameworks benchmarked
