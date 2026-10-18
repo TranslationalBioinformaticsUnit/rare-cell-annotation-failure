@@ -15,7 +15,6 @@ A mixed-effects logistic regression predicts whether a rare cell type is poorly 
 - [Input data](#input-data)
 - [Annotation frameworks benchmarked](#annotation-frameworks-benchmarked)
 - [Datasets](#datasets)
-- [Citation and license](#citation-and-license)
 
 ## Requirements
 
@@ -133,7 +132,3 @@ The benchmark used 37 public scRNA-seq datasets.
 | Darmanis | Cerebral cortex | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/558385a4-b7b7-4eca-af0c-9e54d010e8dc) |
 | Muraro | Pancreas | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/6e8c5415-302c-492a-a5f9-f29c57ff18fb) |
 
-
-## Citation and license
-
-If you use this code, please cite the manuscript (see `CITATION.cff`). Released under the MIT license (`LICENSE`).
