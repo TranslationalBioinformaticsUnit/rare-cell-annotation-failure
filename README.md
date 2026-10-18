@@ -11,13 +11,11 @@ A mixed-effects logistic regression predicts whether a rare cell type is poorly 
 
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
+- [Reproducibility notes](#reproducibility-notes)
 - [Input data](#input-data)
-- [Outputs](#outputs)
 - [Annotation frameworks benchmarked](#annotation-frameworks-benchmarked)
 - [Datasets](#datasets)
-- [Reproducibility notes](#reproducibility-notes)
 - [Citation and license](#citation-and-license)
-
 
 ## Requirements
 
@@ -55,7 +53,7 @@ Run the script from the repository root. To analyze another representation, chan
 - LODO-CV pools out-of-fold predictions from all datasets because single datasets contain too few poorly annotated instances for a per-dataset AUROC.
 - SHAP values are computed with `fastshap` on the predicted-probability scale, using fixed effects only.
 
-## Input data
+## Data
 
 `data/LR_data.csv` has one row per rare cell-type instance (a rare cell type within a dataset):
 
@@ -67,18 +65,10 @@ Run the script from the repository root. To analyze another representation, chan
 | `Euclidean_min` | **Proximity**: Euclidean distance between the centroid of the rare cell type and that of the nearest common cell type; smaller means closer |
 | `Imbalance_Ratio_Log_max` | **Class imbalance**: log-transformed imbalance ratio (common to rare cells), maximum over common cell types |
 
-## Outputs
+`data/Distances_rarecommon.csv` 
 
-Written to `results/` (file names start with the analyzed case):
+`data/Benchmarking_results.csv` 
 
-| File | Content |
-|---|---|
-| `*_model_coefficients.csv` | Fixed-effect estimates of the final model |
-| `*_insample_performance.csv` | In-sample AUROC and AUPRC |
-| `*_SHAP_importance.csv` | Mean absolute SHAP value and percentage contribution per feature |
-| `*_LODO_oof_predictions.csv` | Out-of-fold predicted probabilities |
-| `*_LODO_summary.csv` | Pooled LODO-CV AUROC (95% bootstrap CI) and AUPRC |
-| `sessionInfo.txt` | R and package versions of the run |
 
 ## Annotation frameworks benchmarked
 
@@ -114,14 +104,14 @@ The benchmark used 37 public scRNA-seq datasets.
 | Heart atlas | Heart | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/b52eb423-5d0d-4645-b217-e1c6d38b2e72) |
 | Thymus atlas | Thymus | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/fc19ae6c-d7c1-4dce-b703-62c5d52061b4) |
 | Matuck oral | Oral and craniofacial atlas | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/065ad318-59fd-4f8c-b4b1-66caa7665409) |
-| Human retina | Retina | — | _link to be added_ |
+| Human retina | Retina | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/5900dda8-2dc3-4770-b604-084eac1) |
 | Spleen | Spleen | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/854c0855-23ad-4362-8b77-6b1639e7a9fc) |
 | Muscle | Intercostal muscle | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/2d40e6a7-f2fd-49ba-9db9-6b97e4c6dad5) |
 | Embryonic | Embryonic meninges | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/7d66d871-091f-4602-9f42-85f86d2853e0) |
-| Deng | T cell (cell culture) | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/be21c2d1-2392-47d0-96fb-c625d115e0dc) |
+| Deng | T cell culture | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/be21c2d1-2392-47d0-96fb-c625d115e0dc) |
 | Zhang | Limb | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/4fefa187-5d14-4f1e-915b-c892ed320aab) |
 | Wong | Lung | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/9f29fcd0-7075-4420-bd61-e2ec1aebad89) |
-| Berg | Carina of trachea | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/54004c5c-af08-4693-a606-73871b6ef989) |
+| Berg | Tracheal carina | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/54004c5c-af08-4693-a606-73871b6ef989) |
 | Barnes | Lung | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/ec329aed-22bc-4d6e-8935-8282dcb1acac) |
 | Zheng68K | Peripheral blood | 10x Genomics | [Dataset page](https://www.10xgenomics.com/datasets?menu%5Bproducts.name%5D=Single%20Cell%20Gene%20Expression) |
 | Matuck dental | Dental | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/065ad318-59fd-4f8c-b4b1-66caa7665409) |
@@ -142,7 +132,6 @@ The benchmark used 37 public scRNA-seq datasets.
 | MacParland | Liver | GEO | [GSE115469](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE115469) |
 | Darmanis | Cerebral cortex | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/558385a4-b7b7-4eca-af0c-9e54d010e8dc) |
 | Muraro | Pancreas | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/6e8c5415-302c-492a-a5f9-f29c57ff18fb) |
-
 
 
 ## Citation and license
