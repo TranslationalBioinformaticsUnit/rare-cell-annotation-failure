@@ -47,7 +47,7 @@ Run the script from the repository root. To analyze another representation, chan
 
 ## Reproducibility notes
 
-- One seed (`SEED = 42`) is set at the top of the script and is used for SHAP sampling and the bootstrap, so keep the order of steps unchanged to reproduce the reported confidence interval.
+- One seed (`SEED = 123`) is set at the top of the script and is used for SHAP sampling and the bootstrap, so keep the order of steps unchanged to reproduce the reported confidence interval.
 - The final model is fitted with the default `glmer` optimizer; LODO-CV refits use `bobyqa` (`maxfun = 2e5`).
 - LODO-CV pools out-of-fold predictions from all datasets because single datasets contain too few poorly annotated instances for a per-dataset AUROC.
 - SHAP values are computed with `fastshap` on the predicted-probability scale, using fixed effects only.
