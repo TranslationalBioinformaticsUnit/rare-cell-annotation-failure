@@ -75,14 +75,13 @@ For every rare cell type, its distance to each common cell type of the same data
 | `Mahalanobis` | Mahalanobis (covariance-adjusted) distance between the two centroids |
 | `Cosine_Similarity` | Cosine similarity between the two centroid vectors |
 | `Imbalance_Ratio_Log` | Log-transformed imbalance ratio (cells of the common cell type divided by cells of the rare cell type) |
-| `Case` | Framework and representation space (below) |
+| `Case` | CellPLM_embeddings, CellPLM_HVG, CELLama_embeddings, and CELLama_HVG |
 | `DatPair` | `Dataset_Pair` |
 | `Rare_Celltype_ID` | `Dataset_<rare cell type>`, the key shared with `Benchmarking_results.csv` |
 
 
 `data/Benchmarking_results.csv` 
-
-F1-score of every cell type on the **held-out test partition** (30% of the cells of each dataset, stratified by cell type) for each annotation framework. One row per framework, dataset and cell type (18,650 rows, 37 datasets).
+F1-score of every cell type on the **held-out test partition** (30% of the cells of each dataset, stratified by cell type) for each annotation framework.
 
 | Column | Description |
 |---|---|
@@ -94,7 +93,7 @@ F1-score of every cell type on the **held-out test partition** (30% of the cells
 | `Type` | `Rare` (< 1% of the cells of the dataset), `Common`, or `none` for summary rows |
 | `SupportTest` | Number of cells of the cell type in the test partition |
 
-The 18 `Tool` labels correspond to the 12 frameworks listed [below](#annotation-frameworks-benchmarked). UCE, scMulan and scPRINT, which produce embeddings, are evaluated with three downstream classifiers: logistic regression (`_LR`), 30-nearest neighbors (`_30KNN`) and a multilayer perceptron (`_MLP`). The benchmark summaries in the manuscript use the `_MLP` variants.
+The 18 `Tool` labels correspond to the 12 frameworks listed [below](#annotation-frameworks-benchmarked). UCE, scMulan and scPRINT, which produce embeddings, are evaluated with three downstream classifiers: logistic regression (`_LR`), 30-nearest neighbors (`_30KNN`) and a multilayer perceptron (`_MLP`). The benchmark summaries in the manuscript use the `_MLP`.
 
 
 ## Annotation frameworks benchmarked
