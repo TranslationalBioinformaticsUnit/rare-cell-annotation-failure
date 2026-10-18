@@ -48,6 +48,13 @@ Rscript analysis.R
 
 Run the script from the repository root. To analyze another representation, change `CASE` at the top of `analysis.R` (by default CellPLM_embeddings).
 
+## Reproducibility notes
+
+- One seed (`SEED = 42`) is set at the top of the script and is used for SHAP sampling and the bootstrap, so keep the order of steps unchanged to reproduce the reported confidence interval.
+- The final model is fitted with the default `glmer` optimizer; LODO-CV refits use `bobyqa` (`maxfun = 2e5`).
+- LODO-CV pools out-of-fold predictions from all datasets because single datasets contain too few poorly annotated instances for a per-dataset AUROC.
+- SHAP values are computed with `fastshap` on the predicted-probability scale, using fixed effects only.
+
 ## Input data
 
 `data/LR_data.csv` has one row per rare cell-type instance (a rare cell type within a dataset):
@@ -136,12 +143,7 @@ The benchmark used 37 public scRNA-seq datasets.
 | Darmanis | Cerebral cortex | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/558385a4-b7b7-4eca-af0c-9e54d010e8dc) |
 | Muraro | Pancreas | CELLxGENE | [Collection](https://cellxgene.cziscience.com/collections/6e8c5415-302c-492a-a5f9-f29c57ff18fb) |
 
-## Reproducibility notes
 
-- One seed (`SEED = 42`) is set at the top of the script and is used for SHAP sampling and the bootstrap, so keep the order of steps unchanged to reproduce the reported confidence interval.
-- The final model is fitted with the default `glmer` optimizer; LODO-CV refits use `bobyqa` (`maxfun = 2e5`).
-- LODO-CV pools out-of-fold predictions from all datasets because single datasets contain too few poorly annotated instances for a per-dataset AUROC.
-- SHAP values are computed with `fastshap` on the predicted-probability scale, using fixed effects only.
 
 ## Citation and license
 
