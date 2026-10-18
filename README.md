@@ -37,8 +37,8 @@ install.packages(c("dplyr", "pROC", "PRROC", "lme4", "fastshap"))
 ## Quick start
 
 ```bash
-git clone https://github.com/TranslationalBioinformaticsUnit/Rarecell-annotation-failure.git
-cd Rarecell-annotation-failure
+git clone https://github.com/TranslationalBioinformaticsUnit/rare-cell-annotation-failure.git
+cd rare-cell-annotation-failure
 # Run analysis script
 Rscript analysis.R
 ```
