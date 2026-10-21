@@ -43,7 +43,7 @@ cd rare-cell-annotation-failure
 Rscript analysis.R
 ```
 
-Run the script from the repository root. To analyze another representation, change `CASE` at the top of `analysis.R` (by default CellPLM_embeddings, options CellPLM_HVG, CELLama_embeddings, and CELLama_HVG).
+Run the script from the repository root. To analyze another representation, change `CASE` at the top of `analysis.R` (by default CellPLM_embeddings, options CellPLM_expression, CELLama_embeddings, and CELLama_expression).
 
 ## Reproducibility notes
 
