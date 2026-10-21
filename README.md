@@ -75,7 +75,7 @@ For every rare cell type, its distance to each common cell type of the same data
 | `Mahalanobis` | Mahalanobis (covariance-adjusted) distance between the two centroids |
 | `Cosine_Similarity` | Cosine similarity between the two centroid vectors |
 | `Imbalance_Ratio_Log` | Log-transformed imbalance ratio (cells of the common cell type divided by cells of the rare cell type) |
-| `Case` | CellPLM_embeddings, CellPLM_HVG, CELLama_embeddings, and CELLama_HVG |
+| `Case` | CellPLM_embeddings, CellPLM_expression, CELLama_embeddings, and CELLama_expression |
 | `DatPair` | `Dataset_Pair` |
 | `Rare_Celltype_ID` | `Dataset_<rare cell type>`, the key shared with `Benchmarking_results.csv` |
 
